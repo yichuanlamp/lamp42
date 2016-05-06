@@ -1,0 +1,93 @@
+<extend name="./Public/public" />
+<block name="title">
+    <h1 class="page-header">商品添加</h1>
+</block>
+
+<block name="content">
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form" method="post" action="{:U('Admin/Goods/insert')}" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>选择分类</label>
+                                    <select name="cate_id" class="form-control">
+                                        <option value="0">请选择分类</option>
+                                    <foreach name="cates" item="vo" > 
+                                        <option value="{$vo.id}">{$vo.name}</option>
+                                    </foreach>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>商品标题</label>
+                                    <input name="title" placeholder="请输入标题" class="form-control">
+                                </div>
+                                 <div class="form-group">
+                                    <label>商品价格</label>
+                                    <input name="price" placeholder="请输入标题" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>商品数量</label>
+                                    <input name="num" placeholder="请输入标题" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>商品图片</label>
+                                    <input type="file" name="pic">
+                                    <!-- <img src="__PUBLIC__/Admin/ueditor/upload/image/20160429/1461920460295284.jpg" alt=""> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>商品详情</label>
+                                    <script id="editor" name="content" type="text/plain" style="width:750px;height:300px;"></script>
+                                </div>
+                                <div class="form-group">
+                                    <label>验证码</label>
+                                    <input name="vcode" class="form-control">
+                                    <img src="{:U('Admin/Public/createVcode')}" alt="" onclick="this.src=this.src+'?a'">
+                                    
+                                </div>
+                                
+                                
+                                <button class="btn btn-primary btn-lg btn-block" >添加</button>
+                            </form>
+                        </div>
+                       
+                        
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!--
+        //编辑器的使用流程
+        //1 下载
+        //2 引入三个js标签
+        //3 script标签放置(放置在当前要显示编辑器的位置)
+        //4 运行js代码var ue = UE.getEditor('container');
+        //5 将编辑器的文件和文件夹放置在public文件夹中
+        //6 调整引入的js文件的路径
+        //7 使用行内样式修改编辑器的宽高 还可以设置name属性用来提交表单数据 setAttribute
+        //8 修改图片的上传路径  ueditor目录下php目录中 有个config.json   imagePathFormat
+    -->
+    <script type="text/javascript">
+
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+    </script>
+</block>

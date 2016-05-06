@@ -1,0 +1,99 @@
+<extend name="./Public/public" />
+<block name="title">
+    <h1 class="page-header">用户修改</h1>
+</block>
+
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form" method="post" action="{:U('Admin/User/update')}" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="{$info['id']}">
+                                <div class="form-group">
+                                    <label>用户名</label>
+                                    <input value="{$info['username']}" id="disabledInput"  name="username" placeholder="请输入用户名" class="form-control">
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label>密码</label>
+                                    <input value="{$info['password']}" type="password" name="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>邮箱</label>
+                                    <input value="{$info['email']}" name="email" placeholder="请输入邮箱" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>头像上传</label>
+                                    <input type="file" name="pic">
+                                </div>
+                                <br>
+                                <img src="__PUBLIC__/{$info['pic']}" width="50px">
+                                <div class="form-group">
+                                    <label>个性签名</label>
+                                    <textarea name="intro" rows="3" class="form-control">{$info['intro']}</textarea>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label>爱好</label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="排球" type="checkbox" <if condition="in_array('排球',$hobby)">checked</if>>排球
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="台球" type="checkbox" 
+                                        <?php 
+                                        if(in_array('台球',$hobby)){ echo 'checked';}
+                                            
+                                         ?>>台球
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="乒乓球" type="checkbox"
+                                        <?php 
+                                            if(in_array('乒乓球',$hobby)){ echo 'checked';}
+                                         ?>
+                                        >乒乓球
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>性别</label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" checked="" value="1" id="optionsRadiosInline1" name="sex" <if condition="$info['sex'] eq 1">checked</if>>男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" value="0" id="optionsRadiosInline2" name="sex" <if condition="$info['sex'] eq 0">checked</if>>女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" value="2" id="optionsRadiosInline3" name="sex" <if condition="$info['sex'] eq 2">checked</if>>保密
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>角色</label>
+                                    <select name="level" class="form-control">
+                                        <option value="0" <if condition="$info['level'] eq 0">selected</if>>游客</option>
+                                        <option value="1" <if condition="$info['level'] eq 1">selected</if>>会员</option>
+                                        <option value="2" <if condition="$info['level'] eq 2">selected</if>>管理员</option>
+                                        <option value="3" <if condition="$info['level'] eq 3">selected</if>>超级管理员</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary btn-lg btn-block" >修改</button>
+                            </form>
+                        </div>
+                       
+                        
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</block>

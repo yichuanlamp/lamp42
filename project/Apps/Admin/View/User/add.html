@@ -1,0 +1,87 @@
+<extend name="./Public/public" />
+<block name="title">
+    <h1 class="page-header">用户添加</h1>
+</block>
+
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form" method="post" action="{:U('Admin/User/insert')}" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>用户名</label>
+                                    <input name="username" placeholder="请输入用户名" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>密码</label>
+                                    <input type="password" name="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>邮箱</label>
+                                    <input name="email" placeholder="请输入邮箱" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>头像上传</label>
+                                    <input type="file" name="pic">
+                                </div>
+                                <div class="form-group">
+                                    <label>个性签名</label>
+                                    <textarea name="intro" rows="3" class="form-control">社会是锅粥,过了坎,还有沟</textarea>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label>爱好</label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="排球" type="checkbox">排球
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="台球" type="checkbox">台球
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input name="hobby[]" value="乒乓球" type="checkbox">乒乓球
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>性别</label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" checked="" value="1" id="optionsRadiosInline1" name="sex">男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" value="0" id="optionsRadiosInline2" name="sex">女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" value="2" id="optionsRadiosInline3" name="sex">保密
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>角色</label>
+                                    <select name="level" class="form-control">
+                                        <option value="0">游客</option>
+                                        <option value="1">会员</option>
+                                        <option value="2">管理员</option>
+                                        <option value="3">超级管理员</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary btn-lg btn-block" >添加</button>
+                            </form>
+                        </div>
+                       
+                        
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</block>
